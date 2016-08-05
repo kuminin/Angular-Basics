@@ -8,13 +8,15 @@
   <body ng-app="todoListApp">
     <div ng-controller="mainCtrl" class="list">
       <h1 ng-click="helloWorld()">My TODOs</h1>
-      <input type="checkbox" name=""/>
-      <label class="editing-label" ng-click="helloWorld()">A sample todo!</label>
-      <input class="editing-label" type="text"/>
-      <div class="actions" ng-controller="coolCtrl">
-        <a href="" ng-click="whoAmI()">Edit</a>
-        <a href="" ng-click="helloWorld()">Save</a>
-        <a href="" class="Delete">Delete</a>
+      <div ng-repeat="todo in todos">
+        <input ng-model="todo.completed" type="checkbox" name=""/>
+        <label ng-hide="editing"class="editing-label" ng-click="helloWorld()">{{todo.name}}</label>
+        <input ng-show="editing" ng-model="todo.name" class="editing-label" type="text"/>
+        <div class="actions">
+          <a href="" ng-click=" editing = !editing">Edit</a>
+          <a href="" ng-click="helloWorld()">Save</a>
+          <a href="" class="Delete">Delete</a>
+        </div>
       </div>
     </div>
     <script type="text/javascript" src="vendor/angular.min.js"></script>
